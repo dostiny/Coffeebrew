@@ -13,11 +13,11 @@ module.exports = {
       },
       height: {
         920: '920px',
-        '10vh': '10vh',
-        '90vh': '90vh',
+        '10vh': '7vh',
+        '90vh': '93vh',
       },
       margin: {
-        '10vh': '10vh',
+        '10vh': '7vh',
       },
     },
   },
