@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         SOURCECODE_JENKINS_CREDENTIAL_ID = 'donghun'
-        SOURCE_CODE_URL = 'https://https://lab.ssafy.com/s08-bigdata-recom-sub2/S08P22B305.git'
+        SOURCE_CODE_URL = 'https://lab.ssafy.com/s08-bigdata-recom-sub2/S08P22B305.git'
         RELEASE_BRANCH = 'release-server'
         datasource = 'j8b305.p.ssafy.io'
         dbUser = credentials('dbUser')
