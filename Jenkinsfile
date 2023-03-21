@@ -34,12 +34,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 sh "pwd"
-                sh "docker run -d -v /jenkins/workspace/b305_coffeebrew_server:/var/jenkins_home/workspace/b305_coffeebrew_server
-                -v /var/run/docker.sock:/var/run/docker.sock 
-                -v /etc/localtime:/etc/localtime:ro
-                -v /usr/share/zoneinfo/Asia/Seoul:/etc/timezone:ro
-                -v /logs:/logs
-                -p 8081:8081 --name special-b305-coffeebrew-dev-api-1 -u root server"
+                sh "docker-compose up -d --build"
             }
             post {
                 success {
