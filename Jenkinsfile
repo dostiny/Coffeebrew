@@ -10,7 +10,10 @@ pipeline {
         datasource = 'j8b305.p.ssafy.io'
         dbUser = credentials('dbUser')
         dbPwd = credentials('dbPwd')
+        rest_api_key = credentials('rest_api_key')
+        client_secret_key = credentials('client_secret_key')
         jwt_secret_key = credentials('jwt_secret_key')
+
         schema = 'devdb'
     }
     stages {
@@ -34,8 +37,13 @@ pipeline {
         stage('Deploy') {
             steps{
                 sh "pwd"
+<<<<<<< HEAD
 				sh "docker stop workspace-api-1"
 				sh "docker rm workspace-api-1"
+=======
+                sh "docker stop  workspace-api-1"
+                sh "docker rm  workspace-api-1"
+>>>>>>> 7e2d06572ef09627b0e42cd518d32cd075b2f620
                 sh "docker-compose up -d --build"
             }
             post {
