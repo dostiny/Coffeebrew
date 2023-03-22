@@ -37,6 +37,8 @@ pipeline {
         stage('Deploy') {
             steps{
                 sh "pwd"
+                sh "docker stop  workspace-api-1"
+                sh "docker rm  workspace-api-1"
                 sh "docker-compose up -d --build"
             }
             post {
