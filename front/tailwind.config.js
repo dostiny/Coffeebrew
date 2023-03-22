@@ -19,6 +19,9 @@ module.exports = {
       margin: {
         '10vh': '7vh',
       },
+      backgroundImage: {
+        // 'hero-pattern': "",
+      },
     },
   },
   plugins: [],

@@ -1,21 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-styled-components';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/navbarandfoot/Navbar';
+import Footer from './components/navbarandfoot/Footer';
 import Router from './Router';
 import './App.css';
 
 function App() {
-  const win = window.location.pathname;
-  console.log(win);
-  useEffect(() => {}, []);
+  const [rout, setRout] = useState<string>(window.location.pathname);
+
+  useEffect(() => {
+    console.log(rout);
+  });
+
   return (
     <div className="App">
       <Navbar />
       <ContentContainer>
         <Router />
       </ContentContainer>
-      {window.location.pathname === '/' && win.length > 0 ? null : <Footer />}
+      <Footer />
     </div>
   );
 }
