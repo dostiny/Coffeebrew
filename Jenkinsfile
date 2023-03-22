@@ -10,7 +10,10 @@ pipeline {
         datasource = 'j8b305.p.ssafy.io'
         dbUser = credentials('dbUser')
         dbPwd = credentials('dbPwd')
+        rest_api_key = credentials('rest_api_key')
+        client_secret_key = credentials('client_secret_key')
         jwt_secret_key = credentials('jwt_secret_key')
+
         schema = 'devdb'
     }
     stages {
