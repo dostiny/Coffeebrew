@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Router from './Router';
 import './App.css';
 
-const ContentContainer = tw.div`mt-10vh w-1200 h-90vh mx-auto flex flex-col`;
 function App() {
+  const win = window.location.pathname;
+  console.log(win);
+  useEffect(() => {}, []);
   return (
     <div className="App">
       <Navbar />
       <ContentContainer>
         <Router />
       </ContentContainer>
-      <Footer />
+      {window.location.pathname === '/' && win.length > 0 ? null : <Footer />}
     </div>
   );
 }
 
+const ContentContainer = tw.div`mt-10vh min-h-90vh flex flex-col`;
 export default App;
