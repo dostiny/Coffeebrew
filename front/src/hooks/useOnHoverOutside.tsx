@@ -1,4 +1,4 @@
-import React, { useEffect, MouseEvent, RefObject } from 'react';
+import { useEffect, MouseEvent, RefObject } from 'react';
 
 // type CustomMouseEvent = MouseEvent<HTMLDivElement, MouseEvent>;
 type HoverType = (ref: RefObject<HTMLElement>, handler: () => void) => void;

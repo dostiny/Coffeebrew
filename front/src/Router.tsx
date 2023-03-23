@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Loading from './components/Loading';
