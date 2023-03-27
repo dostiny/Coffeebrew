@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /api
+    context-path: /api/v1
   port: 8081
   tomcat:
     basedir: .
@@ -30,7 +30,7 @@ spring:
       hibernate:
         globally_quoted_identifiers: 'true'
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       use-new-id-generator-mappings: true
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
