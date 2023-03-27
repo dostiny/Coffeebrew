@@ -30,7 +30,7 @@ pipeline {
         stage('backend dockerizing') {
             steps {
                 sh "pwd"
-                sh "docker build -t server ./server"
+                sh "cd ./server && docker build -t server ."
             }
         }
 
