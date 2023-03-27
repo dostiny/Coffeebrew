@@ -40,6 +40,7 @@ pipeline {
 				sh "docker stop workspace-api-1"
 				sh "docker rm workspace-api-1"
                 sh "docker-compose up -d --build"
+                sh "docker network connect web workspace-api-1"
             }
             post {
                 success {
