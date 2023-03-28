@@ -86,10 +86,10 @@ jwt:
 user:
   url:
     client: https://j8b305.p.ssafy.io
-    logout: /logout
-    admin: /api/admin
-    member: /api/member
-    test: /api/test
+    logout: /api/v1/logout
+    admin: /api/v1/admin
+    member: /api/v1/member
+    test: /api/v1/test
   role:
     admin: ROLE_ADMIN
     member: ROLE_MEMBER
