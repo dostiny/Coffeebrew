@@ -15,6 +15,7 @@ pymysql = "*"
 cryptography = "*"
 pydantic = "*"
 scipy = "*"
+uvicorn = "*"
 
 [dev-packages]
 jupyter = "*"

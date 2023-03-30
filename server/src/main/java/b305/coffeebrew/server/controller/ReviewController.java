@@ -54,7 +54,6 @@ public class ReviewController {
     }
 
     /**
-     * 리뷰 삭제
      */
     @DeleteMapping("/{reviewId}")
     @ApiOperation(value = "리뷰 삭제", notes = "리뷰 삭제를 진행")

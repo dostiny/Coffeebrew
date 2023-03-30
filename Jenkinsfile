@@ -19,13 +19,6 @@ pipeline {
             }
         }
 
-        stage('frontend dockerizing') {
-            steps {
-                sh "pwd"
-                sh "docker build -t recom ./server-recom"
-            }
-        }
-
 		stage('Deploy') {
             steps{
                 sh "pwd"
