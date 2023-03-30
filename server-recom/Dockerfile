@@ -2,12 +2,13 @@ FROM python:3.9
 
 RUN pip install pipenv
 
-COPY Pipfile Pipfile.lock /app/
+WORKDIR /recom
 
-WORKDIR /app
+COPY app/ /recom/app/
+COPY data/ /recom/data/
+COPY Pipfile /recom/Pipfile
+COPY Pipfile.lock /recom/Pipfile.lock
 
 RUN pipenv install --system --deploy
-
-COPY ./app /app
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8009", "--reload"]
