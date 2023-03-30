@@ -11,4 +11,4 @@ COPY Pipfile.lock /recom/Pipfile.lock
 
 RUN pipenv install --system --deploy
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8009", "--reload"]
+CMD ["pipenv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8009", "--reload"]
