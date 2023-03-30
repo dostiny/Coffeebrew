@@ -28,6 +28,7 @@ pipeline {
 
 		stage('Deploy') {
             steps{
+                sh 'docker stop fastapi && docker rm fastapi'
                 sh 'docker run -d -v /var/run/docker.sock:/var/run/docker.sock   -v /jenkins/workspace/b305_coffeebrew_recom_server:/var/jenkins_home/workspace/b305_coffeebrew_recom_server --name fastapi -p 8009:8009 recom'
             }
             post {
