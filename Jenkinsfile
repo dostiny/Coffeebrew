@@ -19,19 +19,24 @@ pipeline {
             }
         }
 
+        stage('recom server dockerizing') {
+            steps {
+                sh "pwd"
+                sh "cd ./server-recom && docker build -t recom ."
+            }
+        }
+
 		stage('Deploy') {
             steps{
-                sh "pwd"
-                sh "docker-compose --file /var/jenkins_home/workspace/docker-compose-recom.yml up -d --build"
-                sh "docker-compose ps"
+                sh 'docker run -d -v /var/run/docker.sock:/var/run/docker.sock   - /jenkins/workspace/b305_coffeebrew_recom_server:/var/jenkins_home/workspace/b305_coffeebrew_recom_server --name fastapi -p 8009:8009 recom'
             }
             post {
                 success {
-                    echo "docker-compose success"
+                    echo "Deploy success"
                 }
 
                 failure {
-                    echo "docker-compose failed"
+                    echo "Deploy failed"
                 }
             }		
         }
