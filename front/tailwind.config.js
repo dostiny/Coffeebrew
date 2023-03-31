@@ -20,6 +20,7 @@ module.exports = {
         nameColor: '#9A6533',
         pinkColor: '#FF8383',
         mainOrige: '#FF9900',
+        nameTag: '#F3F3F3',
       },
       textColor: {
         mainColorBrown: '#4A2919',
@@ -27,6 +28,7 @@ module.exports = {
         productTextBrown: '#4A2919',
       },
       width: {
+        42: '42.82px',
         '88vw': '88vw',
         344: '344px',
         360: '360px',
@@ -47,6 +49,7 @@ module.exports = {
         600: '600px',
       },
       height: {
+        42: '42.82px',
         920: '920px',
         '10vh': '7vh',
         '90vh': '93vh',
@@ -54,6 +57,7 @@ module.exports = {
       },
       minHeight: {
         '90vh': '93vh',
+        '1/5': '20vh',
       },
       margin: {
         '10vh': '7vh',
@@ -96,6 +100,9 @@ module.exports = {
       },
       borderWidth: {
         1: '1px',
+      },
+      borderRadius: {
+        percent: '70%',
       },
     },
   },
