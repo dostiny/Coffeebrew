@@ -2,17 +2,19 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, setNavbar, AppDispatch } from '../../store';
-
 import { useOnHoverOutside } from '../../hooks/useOnHoverOutside';
 import Logo from '../../assets/Coffeebrew.svg';
 import tw from 'tailwind-styled-components';
 import { DropDown } from './DropDown';
 import { LoginModal } from '../login/Login';
 import hypeboy from '../../assets/hypeboy.mp3';
+import MyProfile from './MyProfile';
+import ProfileDropDown from './ProfileDropDown';
 
 const Navbar = () => {
   const reduxData = useSelector((state: RootState) => state);
   const dispatch = useDispatch<AppDispatch>();
+  const [isClick, setIsClick] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -45,9 +47,10 @@ const Navbar = () => {
             onClick={() => {
               navigate('/');
               setMenuDropDownOpen(false);
+              setIsClick(false);
             }}
           >
-            <img src={Logo} width={60} height={52} alt="no_img" />
+            <img src={Logo} width={60} height={60} alt="no_img" />
             <button
               onClick={() => {
                 playMusic();
@@ -65,6 +68,7 @@ const Navbar = () => {
               }`}
               onClick={() => {
                 navigate('/intro');
+                setIsClick(false);
                 setMenuDropDownOpen(false);
               }}
             >
@@ -78,6 +82,7 @@ const Navbar = () => {
               }`}
               onClick={() => {
                 navigate('/info');
+                setIsClick(false);
                 setMenuDropDownOpen(false);
               }}
             >
@@ -91,6 +96,7 @@ const Navbar = () => {
               }`}
               onClick={() => {
                 navigate('/coffeelist');
+                setIsClick(false);
                 setMenuDropDownOpen(false);
               }}
             >
@@ -104,6 +110,7 @@ const Navbar = () => {
               }`}
               onClick={() => {
                 navigate('/survey');
+                setIsClick(false);
                 setMenuDropDownOpen(false);
               }}
             >
@@ -116,7 +123,11 @@ const Navbar = () => {
                 setMenuDropDownOpen(false);
               }}
             >
-              <LoginModal />
+              {reduxData.login === false ? (
+                <LoginModal />
+              ) : (
+                <MyProfile isClick={isClick} setIsClick={setIsClick} />
+              )}
             </NDiv>
           </div>
         </div>
