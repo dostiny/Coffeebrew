@@ -22,8 +22,18 @@ export default api;
 
 export const loginAPI = {
   login: () => api.post(`/login`),
+  logout: () => api.delete(`/member`),
 };
 
 export const detailAPI = {
   getBean: (id: number) => api.get(`/item/bean/${id}`),
+};
+
+//가변인자 보내기
+const getData = (...params: any) => {
+  const url = `/item/bean?${params.join('&')}`;
+  return api.get(url);
+};
+export const listAPI = {
+  getBeans: (...params: any) => getData(...params),
 };
