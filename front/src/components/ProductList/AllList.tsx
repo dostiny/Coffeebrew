@@ -1,7 +1,5 @@
 import tw from 'tailwind-styled-components';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import SearchBar from './SearchBar';
 import CoffeeList from './CoffeeList';
 import Paging from './Pagings';
@@ -64,7 +62,7 @@ const AllList = () => {
   }, []);
 
   return (
-    <AllListBg>
+    <AllListBg style={{ minHeight: '1300px' }}>
       <SearchBar
         pagination={pagination}
         setPagination={setPagination}

@@ -1,13 +1,13 @@
-import Page2Carousel from './Page2Carousel';
 import tw from 'tailwind-styled-components';
+import Page2Carousel from './Page2Carousel';
 
 const Page2 = () => {
   return (
     <Inner>
       <CarouselDiv>
-        <Page2Carousel />
+        <Page2Carousel rec={'bean'} />
+        <Page2Carousel rec={'capcull'} />
       </CarouselDiv>
-      {/* <RecommendCard /> */}
     </Inner>
   );
 };

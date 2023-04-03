@@ -7,6 +7,7 @@ import b305.coffeebrew.server.entity.Bean;
 import b305.coffeebrew.server.entity.BeanDetail;
 import b305.coffeebrew.server.entity.BeanScore;
 import b305.coffeebrew.server.exception.BeanNotFoundException;
+import b305.coffeebrew.server.exception.CoffeebrewServerException;
 import b305.coffeebrew.server.exception.ErrorCode;
 import b305.coffeebrew.server.repository.BeanDetailRepository;
 import b305.coffeebrew.server.repository.BeanRepository;
@@ -42,37 +43,84 @@ public class RecommendService {
 
     private static final String METHOD_NAME = RecommendService.class.getName();
 
+
+    private final BeanService beanService;
     private final BeanRepository beanRepository;
     private final BeanDetailRepository beanDetailRepository;
     private final BeanScoreRepository beanScoreRepository;
 
     @Value(value = "${user.url.fastapi}")
-    public String fastapiURL;
+    private String fastapiURL;
 
-    public List<BeanResDTO> recommendBeans(long beanId) {
-        log.info(METHOD_NAME + "- recommendBeans");
+    public List<BeanDetailPageResDTO> recommendBeansByItem(long beanId) {
+        log.info(METHOD_NAME + " - recommendBeansByItem");
+        log.info("call Rest URL - " + fastapiURL);
         RestTemplate restTemplate = new RestTemplate();
-        log.info(fastapiURL);
 
         // Request
-        HttpEntity<String> response = restTemplate.getForEntity(fastapiURL + "/bean/" + String.valueOf(beanId), String.class);
+        String requestURL = fastapiURL + "/bean/" + String.valueOf(beanId);
+        HttpEntity<String> response = restTemplate.getForEntity(requestURL, String.class);
 
+        return getRecomsDetail(response);
+    }
+
+    public List<BeanDetailPageResDTO> recommendBeansByLike(long userId) {
+        log.info(METHOD_NAME + " - recommendBeansByLike");
+        log.info("call Rest URL - " + fastapiURL);
+        RestTemplate restTemplate = new RestTemplate();
+
+        // Request
+        String requestURL = fastapiURL + "/user/" + String.valueOf(userId) + "/like";
+        HttpEntity<String> response = restTemplate.getForEntity(requestURL, String.class);
+
+        return getRecomsDetail(response);
+    }
+
+    public List<BeanDetailPageResDTO> recommendBeansByReview(long userId) {
+        log.info(METHOD_NAME + " - recommendBeansByReview");
+        log.info("call Rest URL - " + fastapiURL);
+        RestTemplate restTemplate = new RestTemplate();
+
+        // Request
+        String requestURL = fastapiURL + "/user/" + String.valueOf(userId) + "/review";
+        HttpEntity<String> response = restTemplate.getForEntity(requestURL, String.class);
+
+        return getRecomsDetail(response);
+    }
+
+    /**
+     * 스케쥴러 업데이트
+     **/
+    public void recommendUpdate() {
+        log.info("call Rest URL - " + fastapiURL);
+        RestTemplate restTemplate = new RestTemplate();
+
+        // Request
+        String requestURL = fastapiURL + "/update";
+        HttpEntity<String> response = restTemplate.getForEntity(requestURL, String.class);
+        log.info("Update response = {}", response);
+    }
+
+    private List<BeanDetailPageResDTO> getRecomsDetail(HttpEntity<String> response) {
+        // JSON Parsing
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
 
-        List<RecomResDTO> recomResDTOList = null;
+        List<RecomResDTO> recomResDTOList;
         try {
-            recomResDTOList = objectMapper.readValue(response.getBody(),  new TypeReference<List<RecomResDTO>>() {});
+            recomResDTOList = objectMapper.readValue(response.getBody(), new TypeReference<List<RecomResDTO>>() {
+            });
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new CoffeebrewServerException(ErrorCode.RECOM_SERVER_ERROR);
         }
 
-        List<BeanResDTO> beanResDTOList = new ArrayList<>();
-        for(RecomResDTO recomResDTO : recomResDTOList) {
-            log.info("testLog - " + recomResDTO.toString());
-            beanResDTOList.add(BeanResDTO.of(beanRepository.findByIdx(recomResDTO.getId())));
+        List<BeanDetailPageResDTO> beanDTOList = new ArrayList<>();
+        for (RecomResDTO recomResDTO : recomResDTOList) {
+            // log.info("recomResDTO - " + recomResDTO.toString());
+            beanDTOList.add(beanService.getBeanDetail(recomResDTO.getId()));
         }
 
-        return beanResDTOList;
+        return beanDTOList;
     }
+
 }
