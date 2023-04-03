@@ -38,6 +38,7 @@ public class ReviewController {
             @ApiResponse(code = 500, message = "서버 오류"),
     })
 <<<<<<< HEAD
+<<<<<<< HEAD
     public ResponseEntity<ResponseDTO> registReview(@RequestBody ReviewPageDTO reviewPageDTO, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         return ResponseEntity.ok().body(ResponseDTO.of(HttpStatus.OK, Msg.SUCCESS_REVIEW_REGISTER, reviewService.registReview(reviewPageDTO, principalDetails.getMember().getIdx())));
     }
@@ -63,6 +64,9 @@ public class ReviewController {
         return ResponseEntity.ok().body(ResponseDTO.of(HttpStatus.OK, Msg.SUCCESS_REVIEW_DELETE,  reviewService.deleteReview(reviewId, principalDetails.getMember().getIdx())));
 =======
     public ResponseEntity<ResponseDTO> readReview(@PathVariable String itemType , @PathVariable String itemIdx) {
+=======
+    public ResponseEntity<ResponseDTO> readReview(@PathVariable String itemType, @PathVariable Long itemIdx) {
+>>>>>>> 451be3040a8228f5d19f783d9c122cf8bc1e338f
         return ResponseEntity.ok().body(ResponseDTO.of(HttpStatus.OK, Msg.SUCCESS_REVIEW_GET, reviewService.readReview(itemType, itemIdx)));
 >>>>>>> dev
     }
