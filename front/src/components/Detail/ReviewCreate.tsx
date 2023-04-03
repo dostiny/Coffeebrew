@@ -42,7 +42,11 @@ const ReviewCreate = () => {
             marginTop: '16px',
           }}
         >
-          <div style={{ marginLeft: 'auto', marginRight: '8px' }}>{item}</div>
+          <div
+            style={{ marginLeft: 'auto', marginRight: '8px', width: '60px' }}
+          >
+            {item}
+          </div>
           <Box width={150} key={i}>
             <Slider
               key={i}
@@ -55,14 +59,15 @@ const ReviewCreate = () => {
                 const newScoreValue: number[] = [...scoreValue];
                 newScoreValue[i] = value as number;
                 setScoreValue(newScoreValue);
-                console.log(scoreValue);
               }}
               sx={{
                 color: '#9A6533',
               }}
             />
           </Box>
-          <div style={{ marginLeft: 'auto' }}>{scoreValue[i]}</div>
+          <div style={{ marginLeft: 'auto', width: '20px' }}>
+            {scoreValue[i]}
+          </div>
         </SliderDiv>
       );
     });
@@ -102,7 +107,7 @@ const ReviewCreate = () => {
                   width: '280px',
                 }}
               >
-                <div style={{ marginTop: '20%' }}>{standardItem()}</div>
+                <div style={{ marginTop: '10%' }}>{standardItem()}</div>
               </div>
             </div>
 

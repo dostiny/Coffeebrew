@@ -70,6 +70,11 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
 
+naver:
+  shopping:
+    client-id: ${clientId}
+    client-secret: ${clientSecret}
+
 jwt:
   header:
     access: Authorization
