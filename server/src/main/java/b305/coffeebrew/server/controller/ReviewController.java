@@ -22,20 +22,23 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/review")
 @RequiredArgsConstructor
-@Api(value = "리뷰 관련 API", tags = {"Member"})
+@Api(value = "리뷰 관련 API", tags = {"Review"})
 public class ReviewController {
 
 
     private final ReviewService reviewService;
+
     /**
-     * 리뷰 작성
+     * 원두 리뷰 조회
      */
-    @PostMapping()
-    @ApiOperation(value = "리뷰 등록", notes = "")
+    @GetMapping("/{itemType}/{itemIdx}")
+    @ApiOperation(value = "리뷰 조회", notes = "")
     @ApiResponses({
             @ApiResponse(code = 200, message = "성공"),
             @ApiResponse(code = 500, message = "서버 오류"),
     })
+<<<<<<< HEAD
+<<<<<<< HEAD
     public ResponseEntity<ResponseDTO> registReview(@RequestBody ReviewPageDTO reviewPageDTO, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         return ResponseEntity.ok().body(ResponseDTO.of(HttpStatus.OK, Msg.SUCCESS_REVIEW_REGISTER, reviewService.registReview(reviewPageDTO, principalDetails.getMember().getIdx())));
     }
@@ -59,5 +62,12 @@ public class ReviewController {
     @ApiOperation(value = "리뷰 삭제", notes = "리뷰 삭제를 진행")
     public ResponseEntity<ResponseDTO> deleteReview(@PathVariable String reviewId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         return ResponseEntity.ok().body(ResponseDTO.of(HttpStatus.OK, Msg.SUCCESS_REVIEW_DELETE,  reviewService.deleteReview(reviewId, principalDetails.getMember().getIdx())));
+=======
+    public ResponseEntity<ResponseDTO> readReview(@PathVariable String itemType , @PathVariable String itemIdx) {
+=======
+    public ResponseEntity<ResponseDTO> readReview(@PathVariable String itemType, @PathVariable Long itemIdx) {
+>>>>>>> 451be3040a8228f5d19f783d9c122cf8bc1e338f
+        return ResponseEntity.ok().body(ResponseDTO.of(HttpStatus.OK, Msg.SUCCESS_REVIEW_GET, reviewService.readReview(itemType, itemIdx)));
+>>>>>>> dev
     }
 }
