@@ -14,6 +14,8 @@ pipeline {
         rest_api_key = credentials('rest_api_key')
         client_secret_key = credentials('client_secret_key')
         jwt_secret_key = credentials('jwt_secret_key')
+        clientId = credentials('clientId')
+        clientSecret = credentials('clientSecret')
         schema = 'devdb'
     }
     stages {
