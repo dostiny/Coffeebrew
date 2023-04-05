@@ -1,6 +1,7 @@
 import tw from 'tailwind-styled-components';
 import { useState, useEffect } from 'react';
 import Analyze from './Analyze';
+import NoAnalyze from './NoAnalyze';
 import BeanLike from './BeanLike';
 import MyReview from './MyReview';
 import { memberAPI, loginAPI } from '../../api/api';
