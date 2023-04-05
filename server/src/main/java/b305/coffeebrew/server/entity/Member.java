@@ -56,6 +56,9 @@ public class Member extends BaseAtTime implements Serializable {
     @Convert(converter = BooleanToYNConverter.class)
     private boolean expired;
 
+    @Column(name = "kakao_id")
+    private Long kakaoId;
+
     @Override
     public void prePersist() {
         super.prePersist();
