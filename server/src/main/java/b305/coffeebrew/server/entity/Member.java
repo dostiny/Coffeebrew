@@ -48,6 +48,7 @@ public class Member extends BaseAtTime implements Serializable {
     private String gender; // 사용자 nickname
 
     @Column(name = "age_range")
+    @ColumnDefault("'20~29'")
     private String  ageRange; // 사용자 나잇대
 
     @ColumnDefault("'ROLE_MEMBER'")
@@ -65,6 +66,12 @@ public class Member extends BaseAtTime implements Serializable {
     public Member update(SignModReqDTO signModReqDTO) {
         this.profileImg = signModReqDTO.getProfileImg();
         this.nickname = signModReqDTO.getNickname();
+        return this;
+    }
+
+    public Member updateAgeAndGender(String ageRange, String gender) {
+        this.ageRange = ageRange;
+        this.gender = gender;
         return this;
     }
 
