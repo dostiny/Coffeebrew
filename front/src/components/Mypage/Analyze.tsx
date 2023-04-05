@@ -72,32 +72,24 @@ const Analyze = ({ survey }: PropsTypes) => {
           <div style={{ marginLeft: '20px' }}>
             <div
               style={{
-                fontSize: '24px',
+                fontSize: '20px',
                 fontWeight: 'bold',
               }}
             >
-              <p
-                style={{
-                  fontSize: '20px',
-                  fontWeight: 'bold',
-                  marginBottom: '16px',
-                }}
-              >
-                당신의 취향은...
-              </p>
+              <p>당신의 취향은...</p>
               <p style={{ color: colorList[Number(typeIndex)] }}>
                 {survey.resultType}!
               </p>
             </div>
             <div
               style={{
-                fontSize: '24px',
+                fontSize: '20px',
                 fontWeight: 'bold',
                 textAlign: 'center',
                 marginTop: '40px',
               }}
             >
-              <p style={{ fontSize: '20px' }}>당신의 키워드는..</p>
+              <p>당신의 키워드는..</p>
               <p style={{ color: colorList[Number(typeIndex)] }}>
                 {survey.coffeeing_note}
               </p>
@@ -106,13 +98,26 @@ const Analyze = ({ survey }: PropsTypes) => {
           </div>
         </div>
       </div>
-      <LinkBtn
-        onClick={() => {
-          Navigate('/coffeeList');
-        }}
-      >
-        <div style={{ marginTop: '16px' }}>나랑 잘맞는 커피를 찾아볼까요?</div>
-      </LinkBtn>
+      <div style={{ display: 'flex' }}>
+        <LinkBtn
+          onClick={() => {
+            Navigate('/coffeeList/bean');
+          }}
+        >
+          <div style={{ marginTop: '16px' }}>
+            나랑 잘맞는 원두를 찾아볼까요?
+          </div>
+        </LinkBtn>
+        <LinkBtn
+          onClick={() => {
+            Navigate('/coffeeList/capsule');
+          }}
+        >
+          <div style={{ marginTop: '16px' }}>
+            나랑 잘맞는 캡슐을 찾아볼까요?
+          </div>
+        </LinkBtn>
+      </div>
     </AnalyzeBody>
   );
 };
