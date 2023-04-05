@@ -68,6 +68,7 @@ public class Member extends BaseAtTime implements Serializable {
     public Member update(SignModReqDTO signModReqDTO) {
         this.profileImg = signModReqDTO.getProfileImg();
         this.nickname = signModReqDTO.getNickname();
+        this.kakaoId = signModReqDTO.getKakaoId();
         return this;
     }
 
