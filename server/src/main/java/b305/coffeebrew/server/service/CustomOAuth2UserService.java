@@ -54,7 +54,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     private Member saveOrUpdate(OAuth2Attribute attributes, String kakaoId) {
-        Member member = memberRepository.findByMemberEmailAndExpiredIsFalse(attributes.getEmail())
+        Member member = memberRepository.findByMemberEmail(attributes.getEmail())
                 .map(entity -> entity.update(new SignModReqDTO(attributes.getName(), attributes.getPicture(), Long.parseLong(kakaoId))))
                 .orElse(attributes.toEntity());
         member.setExpired(false);
