@@ -17,6 +17,7 @@ pipeline {
         clientId = credentials('clientId')
         clientSecret = credentials('clientSecret')
         schema = 'devdb'
+        admin_key = credentials('admin_key')
     }
     stages {
 
