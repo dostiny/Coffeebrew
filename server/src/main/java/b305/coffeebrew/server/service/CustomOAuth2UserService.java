@@ -44,6 +44,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         // OAuth2UserService를 통해 가져온 OAuth2User 값들로 oAuth2Attribute 객체 생성 ( oAuth2User.getAttributes() 에는 반환받은 JSON 값이 들어가있음 )
         OAuth2Attribute oAuth2Attribute = OAuth2Attribute.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
+        log.info("oAuth2User oAuth2User oAuth2User oAuth2User oAuth2User oAuth2User oAuth2User oAuth2User =  {} ", oAuth2User);
+        log.info("oAuth2Attribute =  {} ", oAuth2Attribute);
         log.info("KakaoId =  {} ", oAuth2Attribute.getKakaoId());
         // 만들어진 객체를 map 형식으로 변환 후 OAuth2User 기본객체인 DefaultOAuth2User 생성후 리턴 ( 권한, 유저 데이터, nameAttributeKey ( 사용자 식별을 하기위한 키 ))
         Member member = saveOrUpdate(oAuth2Attribute);
