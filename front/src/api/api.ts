@@ -72,6 +72,7 @@ export const reviewAPI = {
   /**리뷰작성 */
   createBeanReview: (
     id: number,
+    Type: string,
     content: string,
     overall: number,
     flavor: number,
@@ -81,7 +82,7 @@ export const reviewAPI = {
     body: number,
   ) =>
     api.post(`member/review`, {
-      itemType: 'bean',
+      itemType: Type,
       itemIdx: id,
       content: content,
       overall: overall,
@@ -99,6 +100,8 @@ export const reviewAPI = {
 
 // 메인페이지
 export const mainAPI = {
+  /** 비회원 추천 */
+  getNonRecom: (itemType: string | null) => api.get(`recom/item/${itemType}`),
   /** 연령대별 추천 */
   getAgeRecom: (ageRange: string | null, type: string | null) =>
     api.get(`recom/age/${ageRange}/${type}`),
