@@ -58,6 +58,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .map(entity -> entity.update(new SignModReqDTO(attributes.getName(), attributes.getPicture(), Long.parseLong(kakaoId))))
                 .orElse(attributes.toEntity());
         member.setExpired(false);
+        member.setKakaoId(Long.parseLong(kakaoId));
+        log.info("Member Kakao Id = {} ", member.getKakaoId());
         return memberRepository.save(member);
     }
 }
