@@ -40,7 +40,7 @@ public class OAuth2Attribute {
         Map<String,Object> kakaoProfile = (Map<String,Object>) kakaoAccount.get("profile");
         log.debug("{}",kakaoProfile.values());
         return OAuth2Attribute.builder()
-                .kakaoId((Long) attributes.get("Name"))
+                .kakaoId((Long) kakaoProfile.get("id"))
                 .name((String) kakaoProfile.get("nickname"))
                 .email((String) kakaoAccount.get("email"))
                 .picture((String) kakaoProfile.get("profile_image_url"))
