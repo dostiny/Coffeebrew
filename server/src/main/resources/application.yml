@@ -122,11 +122,11 @@ user:
 
 logging:
   level:
-    b305.coffeebrew.server: WARN
+    b305.coffeebrew.server: ERROR
     org:
       hibernate:
-        SQL: WARN
+        SQL: ERROR
         type:
           descriptor:
             sql:
-              BasicBinder: WARN
+              BasicBinder: ERROR
