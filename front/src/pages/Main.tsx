@@ -51,20 +51,22 @@ const Main = ({ setIsFooter }: IsFooterType) => {
   }, [setIsFooter]);
 
   useEffect(() => {
-    const getInfo = async () => {
-      await memberAPI
-        .memberSurvey()
-        .then((request) => {
-          if (request.data.value.param1) {
+    if (reduxData.login) {
+      const getInfo = async () => {
+        await memberAPI
+          .memberSurvey()
+          .then((request) => {
             setSurvey(2);
-          } else {
+          })
+          .catch((e) => {
+            console.log(e);
             setSurvey(1);
-          }
-          setSurvey(request.data.value);
-        })
-        .catch((e) => console.log(e));
-    };
-    getInfo();
+          });
+      };
+      getInfo();
+    } else {
+      setSurvey(1);
+    }
   }, []);
 
   useEffect(() => {
