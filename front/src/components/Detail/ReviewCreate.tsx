@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -174,13 +174,14 @@ const ReviewCreate = () => {
                   reviewAPI
                     .createBeanReview(
                       Number(beanId), // 원두ID
+                      'bean',
                       reviewContent, // 내용
-                      Number(scoreValue[5]), // 총점
-                      Number(scoreValue[0]), // 향
-                      Number(scoreValue[1]), // 산미
-                      Number(scoreValue[2]), // 단맛
-                      Number(scoreValue[3]), // 쓴맛
-                      Number(scoreValue[4]), // 바디감
+                      Number(scoreValue[5]) * 2, // 총점
+                      Number(scoreValue[0]) * 2, // 향
+                      Number(scoreValue[1]) * 2, // 산미
+                      Number(scoreValue[2]) * 2, // 단맛
+                      Number(scoreValue[3]) * 2, // 쓴맛
+                      Number(scoreValue[4]) * 2, // 바디감
                     )
                     .then((request) => {
                       window.location.reload();

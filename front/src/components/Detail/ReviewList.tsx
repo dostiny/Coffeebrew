@@ -1,7 +1,5 @@
 import tw from 'tailwind-styled-components';
 import { useState, useRef, useEffect } from 'react';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { useParams } from 'react-router-dom';
 import ratingfull from '../../assets/tempImg/ratingfull.png';
 import ratinghalf from '../../assets/tempImg/ratinghalf.png';
 import ratingempty from '../../assets/tempImg/ratingempty.png';
