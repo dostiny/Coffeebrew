@@ -16,6 +16,8 @@ cryptography = "*"
 pydantic = "*"
 scipy = "*"
 uvicorn = "*"
+nltk = "*"
+konlpy = "*"
 
 [dev-packages]
 jupyter = "*"
