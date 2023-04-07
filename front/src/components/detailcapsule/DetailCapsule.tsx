@@ -5,6 +5,7 @@ import { detailAPI, reviewAPI } from '../../api/api';
 import CapsuleInfo from './CapsuleInfo';
 import RecommendCapsule from './RecommendBean';
 import ReviewAll from './ReviewAll';
+import Shopping from '../Detail/Shopping';
 
 //**DetailCapsule 타입설정 */
 interface Capsule {
@@ -132,6 +133,12 @@ const DetailCapsule = () => {
         </div>
         <RecommendCapsule />
       </CapsuleTop2>
+      <CapsuleTop4>
+        <Title> 여기서 구매해볼 수 있어요</Title>
+        {detailCapsule?.linkDTO ? (
+          <Shopping linkDTO={detailCapsule?.linkDTO} />
+        ) : null}
+      </CapsuleTop4>
       {/* 리뷰관련 */}
       <CapsuleTop3 style={{ marginTop: '40px' }}>
         {detailReview ? <ReviewAll detailReview={detailReview} /> : null}

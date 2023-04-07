@@ -15,9 +15,7 @@ const Shopping = ({ linkDTO }: PropsTypes) => {
               <ShopItemImg src={data.image} />
               <ShopItemB>
                 <ShopItemName>{data?.mallName}</ShopItemName>
-                <LinkBtn onClick={() => (window.location.href = data.link)}>
-                  이동
-                </LinkBtn>
+                <LinkBtn onClick={() => window.open(data.link)}>이동</LinkBtn>
               </ShopItemB>
             </ShopItemT1>
           </div>
