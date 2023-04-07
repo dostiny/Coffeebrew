@@ -143,6 +143,8 @@ const DetailCapsule = () => {
       <CapsuleTop3 style={{ marginTop: '40px' }}>
         {detailReview ? <ReviewAll detailReview={detailReview} /> : null}
       </CapsuleTop3>
+      <Line></Line>
+      <MoreBtn onClick={() => navigate(-1)}> 돌아가기 </MoreBtn>
     </DetailBg>
   );
 };
